@@ -24,7 +24,7 @@
     "microfrontend": false,
     "microfrontends": [],
     "nativeLanguage": "en",
-    "packageName": "com.epicwuxia.gateway",
+    "packageName": "org.cst8277.GanWei.gateway",
     "prodDatabaseType": null,
     "reactive": true,
     "searchEngine": false,

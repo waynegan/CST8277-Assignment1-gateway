@@ -1,0 +1,199 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "org.cst8277.GanWei.gateway.service.UserService",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+
+
+'nodes
+subgraph cluster_1403350029 {
+   	label=epicwuxia
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+
+   subgraph cluster_467442333 {
+   	label=gateway
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+
+   AccountResource33144090[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AccountResource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   mailService: MailService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userRepository: UserRepository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userService: UserService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ activateAccount(key: String): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changePassword(passwordChangeDto: PasswordChangeDTO): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finishPasswordReset(keyAndPassword: KeyAndPasswordVM): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- isPasswordLengthInvalid(password: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerAccount(managedUserVM: ManagedUserVM): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ requestPasswordReset(mail: String): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveAccount(userDTO: AdminUserDTO): Mono&lt;Void&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PublicUserResource33144090[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PublicUserResource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   userService: UserService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getAllPublicUsers(request: ServerHttpRequest, pageable: Pageable): Mono&lt;ResponseEntity&lt;Flux&lt;UserDTO&gt;&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- onlyContainsAllowedProperties(pageable: Pageable): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UserResource33144090[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UserResource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   applicationName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mailService: MailService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userRepository: UserRepository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userService: UserService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ createUser(userDTO: AdminUserDTO): Mono&lt;ResponseEntity&lt;User&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteUser(login: String): Mono&lt;ResponseEntity&lt;Void&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllUsers(request: ServerHttpRequest, pageable: Pageable): Mono&lt;ResponseEntity&lt;Flux&lt;AdminUserDTO&gt;&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUser(login: String): Mono&lt;AdminUserDTO&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- onlyContainsAllowedProperties(pageable: Pageable): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUser(login: String, userDTO: AdminUserDTO): Mono&lt;ResponseEntity&lt;AdminUserDTO&gt;&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UserService1455961347[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UserService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   authorityRepository: AuthorityRepository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   passwordEncoder: PasswordEncoder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   userRepository: UserRepository [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ activateRegistration(key: String): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changePassword(currentClearTextPassword: String, newPassword: String): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ completePasswordReset(newPassword: String, key: String): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ countManagedUsers(): Mono&lt;Long&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createUser(userDTO: AdminUserDTO): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteUser(login: String): Mono&lt;Void&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllManagedUsers(pageable: Pageable): Flux&lt;AdminUserDTO&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllPublicUsers(pageable: Pageable): Flux&lt;UserDTO&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserWithAuthoritiesByLogin(login: String): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerUser(userDTO: AdminUserDTO, password: String): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeNotActivatedUsers()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeNotActivatedUsersReactively(): Flux&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ requestPasswordReset(mail: String): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- saveUser(user: User): Mono&lt;User&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUser(userDTO: AdminUserDTO): Mono&lt;AdminUserDTO&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUser(firstName: String, lastName: String, email: String, langKey: String, imageUrl: String): Mono&lt;Void&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+}
+}
+
+'edges
+AccountResource33144090 -> UserService1455961347[label="userService
+[0..1]"];
+PublicUserResource33144090 -> UserService1455961347[label="userService
+[0..1]"];
+UserResource33144090 -> UserService1455961347[label="userService
+[0..1]"];
+
+}
+@enduml

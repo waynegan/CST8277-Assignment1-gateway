@@ -1,0 +1,29 @@
+application {
+  config {
+    applicationType gateway
+    authenticationType jwt
+    baseName gateway
+    buildTool maven
+    cacheProvider no
+    clientFramework angular
+    clientTheme none
+    creationTimestamp 1729040615773
+    databaseType mongodb
+    enableSwaggerCodegen true
+    enableTranslation true
+    jhipsterVersion "8.7.1"
+    jwtSecretKey "MzI4NGMzNzNjZDdkOWRjY2M1ZGU1OTIzN2RhMzljYzc1NTk4OTFkZmQ1M2RkOGQyZTA0ZmUyY2Y1ZTI1ZDhjMTY0MzU0M2FkZjlmODM2MTgzZTdmZDEyOGIyZTI3ODA0ZjU5NTk3ZDZjZjAwZDk5ZGY4MzhjNjRlMmUwNDdkNDY="
+    languages [en, fr]
+    microfrontend false
+    microfrontends []
+    nativeLanguage en
+    packageName org.cst8277.GanWei.gateway
+    reactive true
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType consul
+    testFrameworks []
+    websocket false
+    withAdminUi true
+  }
+}

@@ -101,7 +101,7 @@ management:
 
 mongock:
   migration-scan-package:
-    - com.epicwuxia.gateway.config.dbmigrations
+    - org.cst8277.GanWei.gateway.config.dbmigrations
 
 spring:
   application:
